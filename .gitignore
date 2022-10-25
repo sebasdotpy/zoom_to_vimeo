@@ -1,5 +1,4 @@
 .env
-requirements.txt
 __pycache__/*
 clases_subidas/*
 downloads/*

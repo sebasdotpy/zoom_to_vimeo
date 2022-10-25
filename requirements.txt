@@ -1,0 +1,9 @@
+python-dotenv
+python-decouple
+dateutils
+progress
+progressbar
+python-dateutil
+requests
+tqdm
+PyVimeo
