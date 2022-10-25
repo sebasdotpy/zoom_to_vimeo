@@ -3,6 +3,7 @@ from glob import glob
 from zoom_downloader import ZoomDownloader
 from upload_vimeo import client
 from time import sleep
+from os import mkdir
 import shutil
 
 
@@ -11,6 +12,8 @@ if __name__ == "__main__":
     zoom_downloader.main()
 
     client = client
+
+    mkdir("clases_subidas")
 
     for pth in glob(f"{zoom_downloader.DOWNLOAD_DIRECTORY}/*/*.mp4"):
         name = pth.split("\\")[-1][:-32]
@@ -25,4 +28,4 @@ if __name__ == "__main__":
         print("Moviendo",name,"hacia","clases_subidas/")
         shutil.move(pth, "clases_subidas/")
         print("")
-    shutil.rmtree("clases_subidas/*")
+    shutil.rmtree("clases_subidas")
