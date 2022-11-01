@@ -38,9 +38,9 @@ class ZoomDownloader:
         self.COMPLETED_MEETING_IDS = set()
 
         # Start date now split into YEAR, MONTH, and DAY variables (Within 6 month range)
-        self.RECORDING_START_YEAR = 2022# date.today().year
-        self.RECORDING_START_MONTH = 10# date.today().month
-        self.RECORDING_START_DAY = 30# date.today().day - 1
+        self.RECORDING_START_YEAR = date.today().year
+        self.RECORDING_START_MONTH = date.today().month
+        self.RECORDING_START_DAY = date.today().day - 1
         self.RECORDING_END_DATE = date.today()
 
     def API_ENDPOINT_RECORDING_LIST(self, email):
@@ -203,7 +203,7 @@ class ZoomDownloader:
             self.API_ENDPOINT_DELETE_RECORDINGS(meeting_uuid),
             headers=self.AUTHORIZATION_HEADER,
         )
-        print(response.status_code)
+        print(color.GREEN+"El video fue borrado de la zoom cloud exitosamente" if response.status_code == 204 else color.RED+"Ocurrrio un error al borrar el video, se debe resolver manualmente")
 
     # ################################################################
     # #                        MAIN                                  #
