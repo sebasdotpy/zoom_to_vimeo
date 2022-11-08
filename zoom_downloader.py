@@ -39,10 +39,10 @@ class ZoomDownloader:
 
         # Start date now split into YEAR, MONTH, and DAY variables (Within 6 month range)
         self.RECORDING_END_DATE = date.today()
-        self.PAST_DAY = date.today() - timedelta(days=1)
-        self.RECORDING_START_YEAR = self.PAST_DAY.year
-        self.RECORDING_START_MONTH = self.PAST_DAY.month
-        self.RECORDING_START_DAY = self.PAST_DAY.day
+        # self.PAST_DAY = date.today() - timedelta(days=1)
+        self.RECORDING_START_YEAR = 2022# self.PAST_DAY.year
+        self.RECORDING_START_MONTH = 11# self.PAST_DAY.month
+        self.RECORDING_START_DAY = 4# self.PAST_DAY.day
 
     def API_ENDPOINT_RECORDING_LIST(self, email):
         self.API_ENDPOINT = "https://api.zoom.us/v2/users/" + email + "/recordings"
