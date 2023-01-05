@@ -39,7 +39,7 @@ class ZoomDownloader:
 
         # Start date now split into YEAR, MONTH, and DAY variables (Within 6 month range)
         self.RECORDING_END_DATE = date.today()
-        self.PAST_DAY = date.today() - timedelta(days=1)
+        self.PAST_DAY = date.today() - timedelta(days=60)
         self.RECORDING_START_YEAR = self.PAST_DAY.year
         self.RECORDING_START_MONTH = self.PAST_DAY.month
         self.RECORDING_START_DAY = self.PAST_DAY.day
@@ -244,7 +244,7 @@ class ZoomDownloader:
     """
         )
 
-        self.load_completed_meeting_ids()
+        # self.load_completed_meeting_ids()
 
         print(color.BOLD + "Getting user accounts..." + color.END)
         users = self.get_user_ids()
@@ -266,11 +266,11 @@ class ZoomDownloader:
             for index, recording in enumerate(recordings):
                 success = False
                 meeting_id = recording["uuid"]
-                if meeting_id in self.COMPLETED_MEETING_IDS:
-                    print(
-                        "==> Skipping already downloaded meeting: {}".format(meeting_id)
-                    )
-                    continue
+                # if meeting_id in self.COMPLETED_MEETING_IDS:
+                #     print(
+                #         "==> Skipping already downloaded meeting: {}".format(meeting_id)
+                #     )
+                #     continue
 
                 downloads = self.get_downloads(recording)
                 for (
@@ -313,13 +313,13 @@ class ZoomDownloader:
                         )
                         success = False
 
-                if success:
-                    # if successful, write the ID of this recording to the completed file
-                    with open(self.COMPLETED_MEETING_IDS_LOG, "a") as log:
-                        self.COMPLETED_MEETING_IDS.add(meeting_id)
-                        log.write(meeting_id)
-                        log.write("\n")
-                        log.flush()
+                # if success:
+                #     # if successful, write the ID of this recording to the completed file
+                #     with open(self.COMPLETED_MEETING_IDS_LOG, "a") as log:
+                #         self.COMPLETED_MEETING_IDS.add(meeting_id)
+                #         log.write(meeting_id)
+                #         log.write("\n")
+                #         log.flush()
 
         print(color.BOLD + color.GREEN + "\n*** All done! ***" + color.END)
         save_location = os.path.abspath(self.DOWNLOAD_DIRECTORY)
